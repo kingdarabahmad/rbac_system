@@ -9,6 +9,10 @@ A modern Role-Based Access Control Management System built with React, TypeScrip
 - **Password**
   - admin
 
+## Project Demo Video link
+  -  https://www.loom.com/share/ece5c56bb34a404ca5c73b0eab4fa79f?sid=06e8486c-d66d-4511-95d0-0fa6e415f764
+
+
 ## Features
 
 - **User Management**

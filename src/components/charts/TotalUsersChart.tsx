@@ -23,7 +23,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { useStore } from "@/store/useStore"
 const desktopData = [
   { month: "january", desktop: 186, fill: "var(--color-january)" },
   { month: "february", desktop: 305, fill: "var(--color-february)" },
@@ -102,7 +101,6 @@ const chartConfig = {
 } satisfies ChartConfig
 
 export function TotalUsersChart() {
-  const {users} = useStore()
   const id = "pie-interactive"
   const currentMonth = new Date().toLocaleString('default', { month: 'long' }).toLowerCase();
   const [activeMonth, setActiveMonth] = React.useState(currentMonth)
