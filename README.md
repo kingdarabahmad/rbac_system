@@ -2,6 +2,13 @@
 
 A modern Role-Based Access Control Management System built with React, TypeScript, and Vite. This system provides a comprehensive solution for managing user roles, permissions, and access control in web applications.
 
+## Project Demo Admin Email and Password
+
+- **Email** 
+  - admin@example.com
+- **Password**
+  - admin
+
 ## Features
 
 - **User Management**
