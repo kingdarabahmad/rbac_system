@@ -17,7 +17,7 @@ import gsap from "gsap"
 const items = [
   {
     title: "Home",
-    url: "#",
+    url: "/dashboard",
     icon: Home,
   },
   {
@@ -60,10 +60,13 @@ export function AppSidebar() {
     )
   })
   return (
-    <Sidebar variant="floating" collapsible="icon" className=" animate-sidebar *:border-none py-3 ">
-      <SidebarContent className="rounded-lg ">
+    <Sidebar variant="floating" collapsible="icon" className=" animate-sidebar  py-3 ">
+      <SidebarContent className="rounded-lg">
         <SidebarGroup>
-          <SidebarGroupLabel className="mb-4">Application</SidebarGroupLabel>
+          <SidebarGroupLabel className="mt-2 mb-4 space-x-1 flex items-center baseline">
+            <h1 className="text-3xl italic font-bold">RBAC</h1>
+            <img className="h-10 w-10 rounded-full mix-blend-darken rotate-90" src="https://thumbs.dreamstime.com/b/rocket-logo-icon-design-template-340699309.jpg" alt="" />
+          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu className="space-y-2">
               {items.map((item) => (

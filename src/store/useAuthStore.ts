@@ -1,3 +1,4 @@
+import { toast } from 'sonner';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
@@ -22,6 +23,7 @@ export const useAuthStore = create<AuthState>()(
       },
       logout: () => {
         set({ isAuthenticated: false, isAdmin: false });
+        toast.success('Logout successful');
       },
     }),
     {

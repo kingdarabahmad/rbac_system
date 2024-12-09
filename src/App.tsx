@@ -4,7 +4,7 @@ import AdminDashboard from "./pages/AdminDashboard"
 import { useAuthStore } from "./store/useAuthStore"
 import DashboardLayout from "./pages/DashboardLayout"
 import { UserDetailsPage } from "./pages/UserDetailsPage"
-import { Toaster } from "./components/ui/toaster"
+import { Toaster} from "sonner"
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { isAuthenticated, isAdmin } = useAuthStore()
@@ -39,7 +39,7 @@ function App() {
         </Routes>
 
       </Router>
-      <Toaster  />
+      <Toaster position="top-right"  />
     </div>
   )
 }

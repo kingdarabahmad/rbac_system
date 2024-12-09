@@ -40,14 +40,14 @@ export function RoleDialog({ open, onOpenChange, role }: RoleDialogProps) {
     resolver: zodResolver(formSchema),
     defaultValues: role
       ? {
-          ...role,
-          permissions: role.permissions.map((p) => p.id),
-        }
+        ...role,
+        permissions: role.permissions.map((p) => p.id),
+      }
       : {
-          name: '',
-          description: '',
-          permissions: [],
-        },
+        name: '',
+        description: '',
+        permissions: [],
+      },
   });
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
@@ -59,6 +59,7 @@ export function RoleDialog({ open, onOpenChange, role }: RoleDialogProps) {
       updateRole(role.id, { ...values, permissions: rolePermissions });
     } else {
       addRole({ ...values, permissions: rolePermissions });
+      
     }
     onOpenChange(false);
     form.reset();
@@ -111,7 +112,7 @@ export function RoleDialog({ open, onOpenChange, role }: RoleDialogProps) {
                         control={form.control}
                         name="permissions"
                         render={({ field }) => (
-                          <FormItem className="flex items-center space-x-2">
+                          <FormItem className="flex items-end  space-x-2">
                             <FormControl>
                               <Checkbox
                                 checked={field.value?.includes(permission.id)}
@@ -137,7 +138,7 @@ export function RoleDialog({ open, onOpenChange, role }: RoleDialogProps) {
                 </FormItem>
               )}
             />
-            <Button type="submit" className="w-full">
+            <Button type="submit" className="w-full bg-[#0285da]">
               {role ? 'Update' : 'Add'} Role
             </Button>
           </form>

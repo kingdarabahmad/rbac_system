@@ -15,6 +15,7 @@ import { RoleDialog } from './RoleDialog';
 import { Role } from '@/types';
 import { Card } from '../ui/card';
 
+
 export function RoleTable() {
   const { roles, deleteRole } = useStore();
   const [selectedRole, setSelectedRole] = useState<Role | null>(null);
@@ -23,6 +24,12 @@ export function RoleTable() {
   const handleEdit = (role: Role) => {
     setSelectedRole(role);
     setIsDialogOpen(true);
+
+  };
+
+  const handleDeleteRole = (roleId: string) => {
+    deleteRole(roleId);
+
   };
 
   return (
@@ -39,7 +46,7 @@ export function RoleTable() {
           </TableHeader>
           <TableBody>
             {roles.map((role) => (
-              <TableRow key={role.id}>
+              <TableRow key={role.id} className='hover:bg-[#0285da]/40'>
                 <TableCell>{role.name}</TableCell>
                 <TableCell>{role.description}</TableCell>
                 <TableCell>
@@ -62,7 +69,7 @@ export function RoleTable() {
                   <Button
                     variant="outline"
                     size="icon"
-                    onClick={() => deleteRole(role.id)}
+                    onClick={() => handleDeleteRole(role.id)}
                   >
                     <Trash2 className="h-4 w-4" />
                   </Button>

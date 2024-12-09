@@ -9,3 +9,8 @@ export function cn(...inputs: ClassValue[]) {
 export function formatDate(date: string): string {
   return format(new Date(date), 'MMM d, yyyy');
 }
+
+// Helper function to generate unique IDs
+export const generateId = (prefix: string): string => {
+  return `${prefix}_${crypto.randomUUID()}`;
+};

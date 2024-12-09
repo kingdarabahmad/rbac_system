@@ -23,13 +23,23 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { useStore } from "@/store/useStore"
 const desktopData = [
   { month: "january", desktop: 186, fill: "var(--color-january)" },
   { month: "february", desktop: 305, fill: "var(--color-february)" },
   { month: "march", desktop: 237, fill: "var(--color-march)" },
   { month: "april", desktop: 173, fill: "var(--color-april)" },
   { month: "may", desktop: 209, fill: "var(--color-may)" },
+  { month: "june", desktop: 201, fill: "var(--color-june)" },
+  { month: "july", desktop: 234, fill: "var(--color-july)" },
+  { month: "august", desktop: 212, fill: "var(--color-august)" },
+  { month: "september", desktop: 250, fill: "var(--color-september)" },
+  { month: "october", desktop: 210, fill: "var(--color-october)" },
+  { month: "november", desktop: 180, fill: "var(--color-november)" },
+  { month: "december", desktop: 190, fill: "var(--color-december)" },
 ]
+
+
 
 const chartConfig = {
   visitors: {
@@ -61,11 +71,41 @@ const chartConfig = {
     label: "May",
     color: "hsl(var(--chart-5))",
   },
+  june: {
+    label: "June",
+    color: "hsl(var(--chart-6))",
+  },
+  july: {
+    label: "July",
+    color: "hsl(var(--chart-7))",
+  },
+  august: {
+    label: "August",
+    color: "hsl(var(--chart-8))",
+  },
+  september: {
+    label: "September",
+    color: "hsl(var(--chart-9))",
+  },
+  october: {
+    label: "October",
+    color: "hsl(var(--chart-10))",
+  },
+  november: {
+    label: "November",
+    color: "hsl(var(--chart-11))",
+  },
+  december: {
+    label: "December",
+    color: "hsl(var(--chart-12))",
+  }
 } satisfies ChartConfig
 
 export function TotalUsersChart() {
+  const {users} = useStore()
   const id = "pie-interactive"
-  const [activeMonth, setActiveMonth] = React.useState(desktopData[0].month)
+  const currentMonth = new Date().toLocaleString('default', { month: 'long' }).toLowerCase();
+  const [activeMonth, setActiveMonth] = React.useState(currentMonth)
 
   const activeIndex = React.useMemo(
     () => desktopData.findIndex((item) => item.month === activeMonth),
@@ -73,13 +113,15 @@ export function TotalUsersChart() {
   )
   const months = React.useMemo(() => desktopData.map((item) => item.month), [])
 
+
+
   return (
     <Card data-chart={id} className="flex  flex-col border-none bg-white/80">
       <ChartStyle id={id} config={chartConfig} />
       <CardHeader className="flex-row items-start space-y-0 pb-0">
         <div className="grid gap-1">
           <CardTitle>Total Users</CardTitle>
-          <CardDescription>January - June 2024</CardDescription>
+          <CardDescription>January - December 2024</CardDescription>
         </div>
         <Select value={activeMonth} onValueChange={setActiveMonth}>
           <SelectTrigger

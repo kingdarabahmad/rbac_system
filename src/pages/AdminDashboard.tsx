@@ -2,6 +2,7 @@ import { TotalUsersChart } from '@/components/charts/TotalUsersChart'
 import { RoleDialog } from '@/components/roles/RoleDialog'
 import { RoleTable } from '@/components/roles/RoleTable'
 import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { UserDialog } from '@/components/users/UserDialog'
 import { UserTable } from '@/components/users/UserTable'
@@ -20,9 +21,9 @@ const AdminDashboard = () => {
   const [isRoleDialogOpen, setIsRoleDialogOpen] = useState(false);
   return (
     <div>
-      <div className="animate-chart-section grid grid-cols-1 gap-3 mb-8">
+      <Card className="animate-chart-section grid grid-cols-1 gap-3 mb-8">
         <TotalUsersChart />
-      </div>
+      </Card>
 
       <main className="animate-main-section grid grid-cols-1 py-1 ">
 
@@ -43,7 +44,7 @@ const AdminDashboard = () => {
                 <Button className='bg-[#0285da]' onClick={() => setIsUserDialogOpen(true)}>Add User</Button>
               </TabsContent>
               <TabsContent value="roles" className="m-0">
-                <Button onClick={() => setIsRoleDialogOpen(true)}>Add Role</Button>
+                <Button className='bg-[#0285da]' onClick={() => setIsRoleDialogOpen(true)}>Add Role</Button>
               </TabsContent>
             </div>
           </div>

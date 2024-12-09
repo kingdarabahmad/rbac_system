@@ -27,6 +27,7 @@ import { Button } from '@/components/ui/button';
 import { useStore } from '@/store/useStore';
 import { User } from '@/types';
 
+
 const formSchema = z.object({
   name: z.string().min(2),
   email: z.string().email(),
@@ -55,8 +56,10 @@ export function UserDialog({ open, onOpenChange, user }: UserDialogProps) {
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     if (user) {
       updateUser(user.id, values);
+
     } else {
       addUser(values);
+
     }
     onOpenChange(false);
     form.reset();
@@ -147,7 +150,7 @@ export function UserDialog({ open, onOpenChange, user }: UserDialogProps) {
                 </FormItem>
               )}
             />
-            <Button type="submit" className="w-full">
+            <Button type="submit" className="w-full bg-[#0285da]">
               {user ? 'Update' : 'Add'} User
             </Button>
           </form>

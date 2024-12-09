@@ -10,9 +10,10 @@ import { useNavigate } from 'react-router-dom'
 import { useAuthStore } from '@/store/useAuthStore'
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap'
-import { useToast } from "@/hooks/use-toast"
+
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { isAdmin } from '@/lib/auth'
+
+import { toast } from 'sonner'
 gsap.registerPlugin(ScrollTrigger);
 
 //creating form schema
@@ -25,7 +26,6 @@ const LoginPage = () => {
     const { users, setCurrentUser } = useStore()
     const { login } = useAuthStore()
     const navigate = useNavigate()
-    const { toast } = useToast()
 
     //define the form
     const form = useForm<z.infer<typeof formSchema>>({
@@ -38,31 +38,25 @@ const LoginPage = () => {
 
     //define the submit
     const onSubmit = (values: z.infer<typeof formSchema>) => {
+        console.log(values);
 
         const user = users.find((u) => u.email == values.email)
-    
+        console.log(user);
+
         if (user) {
             setCurrentUser(user);
             const success = login(values.email, values.password);
             if (success) {
-                toast({
-                    //
-                    title: 'Login Success',
-                    description: 'You have successfully logged in',
-                })
+                toast.success('Login successful');
                 navigate('/dashboard');
 
             }
             else {
-                toast({
-                    //
-                    title: 'Login Failed',
-                    description: 'Invalid email or password',
-                })
+                toast.error('Invalid credentials');
             }
         }
         else {
-
+            toast.error('User not found');
         }
     }
 
@@ -78,10 +72,20 @@ const LoginPage = () => {
             opacity: 0,
             duration: 1,
         });
+
+        gsap.from(".animate-rabac-logo", {
+            y: 50,
+            opacity: 0,
+            duration: 3,
+        });
     });
 
     return (
-        <div className="animate-login min-h-screen flex items-center justify-center">
+        <div className="animate-login min-h-screen flex flex-col  gap-24 items-center justify-center">
+            {/* <div className='flex items-center gap-2 animate-rabac-logo'>
+                <h1 className="text-4xl tracking-wider italic font-bold">RBAC</h1>
+                <img className="h-10 w-10 rounded-full mix-blend-hard-light rotate-90" src="https://thumbs.dreamstime.com/b/rocket-logo-icon-design-template-340699309.jpg" alt="" />
+            </div> */}
             <Card className="w-[400px] border-none">
                 <CardHeader className='text-center space-y-1'>
                     <img className='w-25 h-20 object-contain' src="https://cdn.dribbble.com/users/129972/screenshots/3964116/75_smile.gif" alt="login-logo" />

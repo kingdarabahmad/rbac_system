@@ -1,51 +1,118 @@
-# React + TypeScript + Vite
+# RBAC Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern Role-Based Access Control Management System built with React, TypeScript, and Vite. This system provides a comprehensive solution for managing user roles, permissions, and access control in web applications.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **User Management**
+  - Create, update, and delete users
+  - View user details and activity
+  - Manage user roles and permissions
+  - User profile management
 
-## Expanding the ESLint configuration
+- **Role Management**
+  - Define and customize roles
+  - Assign permissions to roles
+  - Role hierarchy management
+  - Role-based access control
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Dashboard & Analytics**
+  - Interactive admin dashboard
+  - Visual data representation with charts
+  
 
-- Configure the top-level `parserOptions` property like this:
+- **Authentication & Security**
+  - Secure login system
+  - Protected routes
+  - Role-based route protection
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Tech Stack
+
+- **Frontend Framework**: React 18 with TypeScript
+- **Build Tool**: Vite
+- **UI Components**: Shadcn UI
+- **Styling**: Tailwind CSS
+- **State Management**: Zustand
+- **Charts**: React Charts
+- **Type Checking**: TypeScript
+- **Development Tools**: ESLint, PostCSS
+
+## Prerequisites
+
+- Node.js (v18 or higher)
+- npm or yarn package manager
+- Git
+
+## Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/rbacmSystem.git
+cd rbacmSystem
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
 ```
-# rbac_system
+
+3. Start the development server:
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+The application will be available at `http://localhost:5173`
+
+## Project Structure
+
+```
+src/
+├── assets/          # Static assets
+├── components/      # React components
+│   ├── admin/       # Admin-specific components
+│   ├── charts/      # Chart components
+│   ├── roles/       # Role management components
+│   ├── ui/          # Shadcn UI components
+│   └── users/       # User management components
+├── hooks/           # Custom React hooks
+├── lib/             # Utility functions and helpers
+├── pages/           # Page components
+├── store/           # Zustand store configurations
+└── types/           # TypeScript type definitions
+```
+
+## Development
+
+### Running Tests
+```bash
+npm run test
+# or
+yarn test
+```
+
+### Building for Production
+```bash
+npm run build
+# or
+yarn build
+```
+
+### Linting
+```bash
+npm run lint
+# or
+yarn lint
+```
+
+## Configuration
+
+The application can be configured through various configuration files:
+
+- `vite.config.ts` - Vite configuration
+- `tailwind.config.js` - Tailwind CSS configuration
+- `tsconfig.json` - TypeScript configuration
+- `components.json` - Shadcn UI configuration

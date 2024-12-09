@@ -15,6 +15,7 @@ import { User, Role } from '@/types';
 import { UserPermissionsList } from './UserPermissonsList';
 import { isAdmin } from '@/lib/auth';
 
+
 interface UserRoleManagementProps {
   user: User;
   userRole: Role | undefined;
@@ -28,6 +29,7 @@ export function UserRoleManagement({ user, userRole }: UserRoleManagementProps) 
   const handleRoleChange = (newRole: string) => {
     updateUser(user.id, { role: newRole });
     setIsEditing(false);
+
   };
 
   return (

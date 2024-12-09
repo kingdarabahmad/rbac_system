@@ -16,14 +16,14 @@ import { User } from '@/types';
 import { useAuthStore } from '@/store/useAuthStore';
 
 interface UserNavProps {
-  user: User ;
+  user: User;
 }
 
 export function Logout({ user }: UserNavProps) {
   const navigate = useNavigate();
   const setCurrentUser = useStore((state) => state.setCurrentUser);
-  const { logout} =useAuthStore();
-  
+  const { logout } = useAuthStore();
+
   const initials = user.name
     .split(' ')
     .map((n) => n[0])

@@ -21,16 +21,17 @@ export function UserTable() {
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const handleEdit = (user: User, event: React.MouseEvent) => {
     event.stopPropagation();
     setSelectedUser(user);
     setIsDialogOpen(true);
   };
-  const handleDeleteUser = (userId: string,event: React.MouseEvent) => {
+  const handleDeleteUser = (userId: string, event: React.MouseEvent) => {
     event.stopPropagation();
     deleteUser(userId);
+
   };
 
   const handleRowClick = (userId: string) => {
@@ -52,7 +53,7 @@ export function UserTable() {
           </TableHeader>
           <TableBody>
             {users.map((user) => (
-              <TableRow key={user.id} className='cursor-pointer' onClick={()=>handleRowClick(user.id)}>
+              <TableRow key={user.id} className='cursor-pointer hover:bg-[#0285da]/40' onClick={() => handleRowClick(user.id)}>
                 <TableCell>{user.name}</TableCell>
                 <TableCell>{user.email}</TableCell>
                 <TableCell>{user.role}</TableCell>
@@ -74,7 +75,7 @@ export function UserTable() {
                   <Button
                     variant="outline"
                     size="icon"
-                    onClick={(event) => handleDeleteUser(user.id,event)}
+                    onClick={(event) => handleDeleteUser(user.id, event)}
                   >
                     <Trash2 className="h-4 w-4" />
                   </Button>
